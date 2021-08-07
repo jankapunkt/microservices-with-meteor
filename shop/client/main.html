@@ -1,0 +1,30 @@
+<head>
+    <title>shop</title>
+</head>
+
+<body>
+<h1>Welcome to our Shop!</h1>
+
+{{> products}}
+</body>
+
+<template name="products">
+
+    <h2>Subscribed products (live)</h2>
+    <ul>
+        {{#each product in subscribedProducts}}
+            <li>{{product.name}}</li>
+        {{else}}
+            <li>Currently no products available</li>
+        {{/each}}
+    </ul>
+
+    <h2>Fetched products (not live)</h2>
+    <ul>
+        {{#each product in fetchedProducts}}
+            <li>{{product.name}}</li>
+        {{else}}
+            <li>Currently no products available</li>
+        {{/each}}
+    </ul>
+</template>

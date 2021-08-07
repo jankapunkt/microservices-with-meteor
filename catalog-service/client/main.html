@@ -1,0 +1,35 @@
+<head>
+    <title>catalog-service</title>
+</head>
+
+<body>
+<h1>Catalog service</h1>
+
+{{#unless currentUser}}
+    {{> loginButtons}}
+{{else}}
+    {{> products}}
+{{/unless}}
+</body>
+
+<template name="products">
+    <ul>
+    {{#each product in allProducts}}
+        <li>
+            <div>
+                {{product.productId}} - {{product.name}}
+                {{#if product.available}})(available){{else}}(not available){{/if}}
+            </div>
+            <div>{{product.description}}</div>
+        </li>
+    {{else}}
+        <li>No products yet!</li>
+    {{/each}}
+    </ul>
+
+    <button class="addProduct">Add product</button>
+
+    {{#if addProduct}}
+        {{> quickForm id="addProductForm" schema=productSchema type="normal"}}
+    {{/if}}
+</template>
